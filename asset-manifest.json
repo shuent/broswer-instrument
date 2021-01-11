@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/broswer-instrument/static/css/main.133e498a.chunk.css",
-    "main.js": "/broswer-instrument/static/js/main.8e5b061d.chunk.js",
-    "main.js.map": "/broswer-instrument/static/js/main.8e5b061d.chunk.js.map",
+    "main.css": "/broswer-instrument/static/css/main.47730e12.chunk.css",
+    "main.js": "/broswer-instrument/static/js/main.ba992d7a.chunk.js",
+    "main.js.map": "/broswer-instrument/static/js/main.ba992d7a.chunk.js.map",
     "runtime-main.js": "/broswer-instrument/static/js/runtime-main.e2222ab8.js",
     "runtime-main.js.map": "/broswer-instrument/static/js/runtime-main.e2222ab8.js.map",
     "static/js/2.b0881623.chunk.js": "/broswer-instrument/static/js/2.b0881623.chunk.js",
@@ -10,13 +10,14 @@
     "static/js/3.0ae93707.chunk.js": "/broswer-instrument/static/js/3.0ae93707.chunk.js",
     "static/js/3.0ae93707.chunk.js.map": "/broswer-instrument/static/js/3.0ae93707.chunk.js.map",
     "index.html": "/broswer-instrument/index.html",
-    "static/css/main.133e498a.chunk.css.map": "/broswer-instrument/static/css/main.133e498a.chunk.css.map",
-    "static/js/2.b0881623.chunk.js.LICENSE.txt": "/broswer-instrument/static/js/2.b0881623.chunk.js.LICENSE.txt"
+    "static/css/main.47730e12.chunk.css.map": "/broswer-instrument/static/css/main.47730e12.chunk.css.map",
+    "static/js/2.b0881623.chunk.js.LICENSE.txt": "/broswer-instrument/static/js/2.b0881623.chunk.js.LICENSE.txt",
+    "static/media/keyb.26965698.png": "/broswer-instrument/static/media/keyb.26965698.png"
   },
   "entrypoints": [
     "static/js/runtime-main.e2222ab8.js",
     "static/js/2.b0881623.chunk.js",
-    "static/css/main.133e498a.chunk.css",
-    "static/js/main.8e5b061d.chunk.js"
+    "static/css/main.47730e12.chunk.css",
+    "static/js/main.ba992d7a.chunk.js"
   ]
 }
