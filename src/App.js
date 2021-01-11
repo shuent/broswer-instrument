@@ -1,5 +1,6 @@
 import Soundfont from 'soundfont-player'
 import React from 'react'
+import keyboardImg from './keyb.png'
 
 function App() {
   const audioContext = new AudioContext();
@@ -13,8 +14,9 @@ function App() {
     const id = event.currentTarget.dataset.id
     setCurrentInstrument(defaultInstruments[id])
     setCurrentInstrumentEmoji(defaultInstrumentsEmoji[id])
-
   }
+
+  const isCurrent = (id) => (defaultInstruments[id] === currentInstrument)
 
   const keydownCallBack = (event) => {
     if (player && !event.repeat) {
@@ -52,10 +54,7 @@ function App() {
 
   const keyupCallBack = (event) => {
     if (player) {
-      if (event) {
-
-        player.stop()
-      }
+      player.stop()
     }
   }
 
@@ -76,18 +75,21 @@ function App() {
 
   return (
     <div className="pt-10 flex flex-col items-center justify-items-center">
-      <h1 className='p-4 text-4xl'>Browser Instrument</h1>
+      <h1 className='p-4 font-light font-serif text-4xl'>Browser Instrument</h1>
       <h1 className='p-4 text-8xl'>{currentInstrumentEmoji}</h1>
       <ul className='w-96 flex text-4xl flex-row justify-between'>
-        <li onClick={handleInstrumentChange} data-id='0' className={`p-4 rounded-lg border border-transparent hover:border hover:border-gray-200 ${defaultInstruments[0] === currentInstrument && '  bg-gray-100'} `}>🎹</li>
-        <li onClick={handleInstrumentChange} data-id='1' className={`p-4 rounded-lg border border-transparent hover:border hover:border-gray-200 ${defaultInstruments[1] === currentInstrument && '  bg-gray-100'} `}>🎸</li>
-        <li onClick={handleInstrumentChange} data-id='2' className={`p-4 rounded-lg border border-transparent hover:border hover:border-gray-200 ${defaultInstruments[2] === currentInstrument && '  bg-gray-100'} `}>🎺</li>
-        <li onClick={handleInstrumentChange} data-id='3' className={`p-4 rounded-lg border border-transparent hover:border hover:border-gray-200 ${defaultInstruments[3] === currentInstrument && '  bg-gray-100'} `}>🎻</li>
+        <ListItem id={0} emoji={defaultInstrumentsEmoji[0]} isCurrent={isCurrent(0)} handleChange={handleInstrumentChange} />
+        <ListItem id={1} emoji={defaultInstrumentsEmoji[1]} isCurrent={isCurrent(1)} handleChange={handleInstrumentChange} />
+        <ListItem id={2} emoji={defaultInstrumentsEmoji[2]} isCurrent={isCurrent(2)} handleChange={handleInstrumentChange} />
+        <ListItem id={3} emoji={defaultInstrumentsEmoji[3]} isCurrent={isCurrent(3)} handleChange={handleInstrumentChange} />
+
       </ul>
-      <p className='py-8'>Use your keyboard to play ['C' for C3] throuh ['/' for C4]</p>
-      <img className='max-w-2xl' src="keyb.png" alt="keyboard" />
+      <p className='py-8 text-gray-500 font-semibold'>Use your keyboard to play ['C' for C3] throuh ['/' for C4]</p>
+      <img className='md:max-w-2xl max-w-full' src={keyboardImg} alt="keyboard" />
     </div>
   );
 }
+
+const ListItem = ({ id, emoji, isCurrent, handleChange }) => (<li onClick={handleChange} data-id={id} className={`cursor-pointer p-4 rounded-lg hover:shadow ${isCurrent && 'bg-gray-100'}`}>{emoji}</li>)
 
 export default App;
