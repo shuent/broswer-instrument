@@ -1,6 +1,7 @@
 import Soundfont from 'soundfont-player'
 import React from 'react'
 import keyboardImg from './keyb.png'
+import { useTransition, animated } from 'react-spring'
 
 function App() {
   const audioContext = new AudioContext();
@@ -9,6 +10,13 @@ function App() {
   const [currentInstrument, setCurrentInstrument] = React.useState(defaultInstruments[0])
   const [currentInstrumentEmoji, setCurrentInstrumentEmoji] = React.useState(defaultInstrumentsEmoji[0])
   const [player, setPlayer] = React.useState(null)
+
+  const transition = useTransition(currentInstrumentEmoji, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 150 },
+  })
 
   const handleInstrumentChange = (event) => {
     const id = event.currentTarget.dataset.id
@@ -76,7 +84,13 @@ function App() {
   return (
     <div className="pt-10 flex flex-col items-center justify-items-center">
       <h1 className='p-4 font-light font-serif text-4xl'>Browser Instrument</h1>
-      <h1 className='p-4 text-8xl'>{currentInstrumentEmoji}</h1>
+      <span className='relative h-48 w-24'>
+        {transition.map(({ item, props, key }) =>
+          <animated.div key={key} style={props} className='absolute mx-auto pt-8 text-8xl'>{item}</animated.div>
+        )}
+      </span>
+      {/* {currentInstrumentEmoji} */}
+      {/* <h1 className='p-4 text-8xl'>{currentInstrumentEmoji}</h1> */}
       <ul className='w-96 flex text-4xl flex-row justify-between'>
         <ListItem id={0} emoji={defaultInstrumentsEmoji[0]} isCurrent={isCurrent(0)} handleChange={handleInstrumentChange} />
         <ListItem id={1} emoji={defaultInstrumentsEmoji[1]} isCurrent={isCurrent(1)} handleChange={handleInstrumentChange} />
@@ -90,6 +104,6 @@ function App() {
   );
 }
 
-const ListItem = ({ id, emoji, isCurrent, handleChange }) => (<li onClick={handleChange} data-id={id} className={`cursor-pointer p-4 rounded-lg hover:shadow ${isCurrent && 'bg-gray-100'}`}>{emoji}</li>)
+const ListItem = ({ id, emoji, isCurrent, handleChange }) => (<li onClick={handleChange} data-id={id} className={`cursor-pointer p-4 rounded-lg hover:shadow transition duration-100 ease-in-out bg-white ${isCurrent && 'bg-gray-100'}`}>{emoji}</li>)
 
 export default App;
