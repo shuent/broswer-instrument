@@ -4,6 +4,7 @@ import keyboardImg from './keyb.png'
 import { useTransition, animated } from 'react-spring'
 
 function App() {
+  window.AudioContext = window.AudioContext || window.webkitAudioContext;
   const audioContext = new AudioContext();
   const defaultInstruments = ['acoustic_grand_piano', 'electric_guitar_clean', 'trumpet', 'violin']
   const defaultInstrumentsEmoji = ['🎹', '🎸', '🎺', '🎻']
